@@ -1,9 +1,16 @@
+* {
+    transition: all 0.3s;
+  }  
 body{
     background: rgb(2,0,36);
     background: radial-gradient(circle, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 48%, rgba(0,212,255,1) 85%);
     text-align: center;
     color: #fff;
     font-family: sans-serif;
+}
+#container-app{
+    position: relative;
+    top: 30px
 }
 #nav{
     width: 80%;
@@ -23,25 +30,35 @@ body{
     box-shadow: 5px 5px 15px 5px #000000;
 }
 #container{
-    /*background-color: rgb(184, 33, 33);*/
+    background-color: rgb(118, 114, 114);
+    color: #fff;
     width: 90%;
-    height: 90%;
     position: relative;
     top: 30px;
     margin: 0 auto;
-    color: rgb(0, 0, 0);
     text-align: left;
+    border-radius: 20px;
 }
 #copyR{
     text-align: center;
     position: relative;
     top: 30px;
 }
-#button{
-    color: white;
-    background-color: rgb(27, 161, 27);
+.btn{
+    width: 96%;
     cursor: pointer;
-    width:100px;
-    height: 30px;
-    border-radius: 10px;
+    background: white;  
+    padding: 10px;
+    margin: 5px;
+    border-radius: 20px;
+}
+.btn:hover{
+    transform: scale(1.05);
+}
+#container-buttons{
+    width: 80%;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    top: 40px;
 }
