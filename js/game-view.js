@@ -1,4 +1,4 @@
-import { escogerPreguntaAleatoria, oprimir_btn, usuario, getUserLocalStorage} from "../js/controllers.js"
+import { escogerPreguntaAleatoria, oprimir_btn, usuario, getUserLocalStorage, mostrarInfo, cerrarSesion} from "../js/controllers.js"
 
 export const controlView = () => {
 
@@ -39,22 +39,38 @@ export const controlView = () => {
     boton2.id = "btn2"
     boton2.addEventListener("click",oprimir_btn)
     boton2.setAttribute('data-id', 1)
-    // boton2.addEventListener("click",oprimir_btn(1))
     const boton3 = document.createElement("div")
     boton3.classList.add("btn")
     boton3.id = "btn3"
     boton3.addEventListener("click",oprimir_btn)
     boton3.setAttribute('data-id', 2)
-    // boton3.addEventListener("click",oprimir_btn(2))
     const boton4 = document.createElement("div")
     boton4.classList.add("btn")
     boton4.id = "btn4"
     boton4.addEventListener("click",oprimir_btn)
     boton4.setAttribute('data-id', 3)
-    // boton4.addEventListener("click",oprimir_btn(3))
 
     containerButtons.append( boton1,boton2, boton3, boton4)
 
+    const containerInfo = document.createElement("div")
+    containerInfo.id = 'container-info'
+    const jugador = document.createElement("h3")
+    jugador.id = 'info-jugador'
+    jugador.innerHTML = "Jugador: "
+    const historial = document.createElement('h3')
+    historial.id = 'historial'
+    historial.innerHTML = "Ultimo puntaje: " 
+
+    containerInfo.append(jugador,historial)
+
+
+    const cerrarSesionContenedor = document.createElement("div")
+    cerrarSesionContenedor.id = "cont-cerrar"
+    const cerrarSesionBoton = document.createElement("h3")
+    cerrarSesionBoton.id = "cerrar"
+    cerrarSesionBoton.innerHTML = "Cerrar sesión"
+    cerrarSesionBoton.addEventListener("click", cerrarSesion)
+    cerrarSesionContenedor.append(cerrarSesionBoton)
 
     const copyRight = document.createElement("div");
     copyRight.id = "copyR"
@@ -63,9 +79,9 @@ export const controlView = () => {
     copyRight.append(copy)
 
     container.append(questions);
-    containerQuestions.append(container, containerButtons);
+    containerQuestions.append(container, containerButtons, containerInfo);
     containerNav.append(category, score);
-    containerApp.append(containerNav, containerQuestions, copyRight)
+    containerApp.append(containerNav, containerQuestions, cerrarSesionContenedor, copyRight)
 
 
     escogerPreguntaAleatoria()
@@ -75,5 +91,8 @@ export const controlView = () => {
         const name = prompt('Ingresa el nombre: ')
         usuario.nombre = name
         localStorage.setItem('usuario', JSON.stringify(usuario));
+
     }
+
+    mostrarInfo()
 }

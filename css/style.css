@@ -33,7 +33,6 @@ body{
     box-shadow: 5px 5px 15px 5px #000000;
 }
 #container{
-
     color: orange;
     width: 90%;
     position: relative;
@@ -66,4 +65,34 @@ body{
     text-align: center;
     position: relative;
     top: 130px;
+}
+#cont-cerrar{
+    width: 12%;
+    height: 20px;
+    position: relative;
+    top: 14px;
+    color: rgb(176, 0, 0);
+    margin: 0 auto;
+    text-align: right;
+    float: right;
+    right:200px
+}
+#cerrar{
+    cursor: pointer;
+}
+#cerrar:hover{
+    font-size: 25px;
+}
+#container-info{
+    width: 70%;
+    height: 50px;
+    margin: 0 auto;
+    margin-top: 180px;
+    display: flex;
+    justify-content:space-between
+}
+#cont-form{
+    background-color: #fff;
+    width: 40%;
+    height: 60px;
 }

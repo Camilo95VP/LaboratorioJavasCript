@@ -3,6 +3,7 @@ import { data } from "../js/base-questions.js";
 let pregunta;
 let posibles_respuestas;
 let  btn_correspondiente;
+let miPuntaje;
 export let usuario = {nombre: "", 
                  puntos: 0}
 
@@ -66,12 +67,15 @@ export function oprimir_btn(event) {
      btn_correspondiente[event.target.dataset.id].style.background = "lightgreen"
      const score = select_id("puntaje")
      let splitScore = score.innerHTML.split(':')
-     let myScore = parseInt(splitScore[1])+10;
-     score.innerHTML = splitScore[0]+' : ' + myScore;
-     console.log(score) 
+     miPuntaje = parseInt(splitScore[1])+10;
+     score.innerHTML = splitScore[0]+' : ' + miPuntaje;
+
   } else {
      btn_correspondiente[event.target.dataset.id].style.background = "pink" 
-
+     const score = select_id("puntaje")
+     let splitScore = score.innerHTML.split(':')
+     miPuntaje = parseInt(splitScore[1])-10;
+     score.innerHTML = splitScore[0]+' : ' + miPuntaje;
   }
   setTimeout(() => {
     reiniciar()
@@ -88,7 +92,7 @@ export function reiniciar(){
 
 
 export function getUserLocalStorage(){
-  
+
   let tempUser = JSON.parse(localStorage.getItem("usuario")) || null;
   
 
@@ -97,12 +101,27 @@ export function getUserLocalStorage(){
  } else {
    usuario = tempUser;
  }
+
  return usuario
 }
 
-//     let btns = [
-//     select_id('btn1'),
-//     select_id('btn2'),
-//     select_id('btn3'),
-//     select_id('btn4')
-// ]
+export function mostrarInfo(){
+
+  const nJugador = select_id("info-jugador")
+  let splitJugador = nJugador.innerHTML.split(':')
+  let miNombre = usuario.nombre;
+  nJugador.innerHTML = splitJugador[0]+' : ' + miNombre;
+  
+  const historialJugador = select_id("historial")
+  let splitHistorial = historialJugador.innerHTML.split(':')
+  let miHistorial = usuario.puntos;
+  historialJugador.innerHTML = splitHistorial[0]+' : ' + miHistorial;
+
+}
+
+export function cerrarSesion(){
+  localStorage.clear();
+  location.reload();
+}
+
+
